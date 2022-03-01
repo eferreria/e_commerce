@@ -50,6 +50,23 @@ view: products {
     sql: ${TABLE}.sku ;;
   }
 
+  parameter: select_dimension {
+    type: unquoted
+    allowed_value: { value: "category" label: "Category"}
+    allowed_value: { value: "brand" label: "Brand"}
+    allowed_value: { value: "name" label: "Product Name"}
+  }
+
+  dimension: dynamic_dimension {
+    label_from_parameter: select_dimension
+    sql:
+    {% if select_dimension._parameter_value == 'category' %} ${category}
+    {% elsif select_dimension._parameter_value == 'brand' %} ${brand}
+    {% else %} ${name}
+    {% endif %}
+    ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, name, distribution_centers.name, distribution_centers.id, inventory_items.count]

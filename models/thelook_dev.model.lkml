@@ -35,9 +35,23 @@ explore: inventory_items {
 }
 
 explore: order_items {
+  hidden: yes
   join: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
+
+  join: state_summary {
+    type: left_outer
+    sql_on: ${users.state} = ${state_summary.state} ;;
+    relationship: many_to_one
+  }
+
+  join: order_fact {
+    view_label: "Order Items"
+    type: left_outer
+    sql_on: ${order_fact.order_id} = ${order_items.order_id} ;;
     relationship: many_to_one
   }
 

@@ -39,6 +39,13 @@ view: users {
     sql: ${TABLE}.created_at ;;
   }
 
+  dimension_group: since_created {
+    type: duration
+    sql_start: ${created_raw} ;;
+    sql_end: current_date ;;
+    datatype: datetime
+  }
+
   dimension: email {
     type: string
     sql: ${TABLE}.email ;;
@@ -52,6 +59,15 @@ view: users {
   dimension: gender {
     type: string
     sql: ${TABLE}.gender ;;
+  }
+
+  dimension: gender_v2 {
+    type: string
+    case: {
+      when: { label: "Male" sql: ${gender} = 'Male' ;;}
+      when: { label: "Female" sql: ${gender} = 'Female' ;;}
+      when: { label: "Non Binary" sql: ${gender} = 'Non Binary' ;;}
+    }
   }
 
   dimension: last_name {

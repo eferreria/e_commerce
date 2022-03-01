@@ -95,10 +95,50 @@ view: order_items {
     sql: ${TABLE}.user_id ;;
   }
 
+  parameter: select_time {
+    type: string
+    allowed_value: { value: "By Day" }
+    allowed_value: { value: "By Week Start" }
+    allowed_value: { value: "By Month" }
+  }
+
+  dimension: dynamic_time {
+    label_from_parameter: select_time
+    sql:
+    {% if select_time._parameter_value == "'By Day'" %} ${created_date}
+    {% elsif select_time._parameter_value == "'By Week Start'" %} ${created_week}
+    {% else %} ${created_month}
+    {% endif %}
+    ;;
+  }
+
+
+
+  # =================================== Measures =================================== {
+
   measure: count {
     type: count
     drill_fields: [detail*]
   }
+
+  measure: total_orders {
+    type: count_distinct
+    sql: ${order_id} ;;
+  }
+
+  measure: total_revenue {
+    type: sum
+    sql: ${sale_price} ;;
+    value_format_name: usd
+  }
+
+  measure: avg_total_sales {
+    type: average
+    sql: ${sale_price} ;;
+    value_format_name: usd
+  }
+
+# =================================== End Measures =================================== }
 
   # ----- Sets of fields for drilling ------
   set: detail {
