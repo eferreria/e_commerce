@@ -2,6 +2,7 @@ connection: "ef-bq"
 
 # include all the views
 include: "/views/**/*.view"
+include: "/dashboards/*.dashboard"
 
 datagroup: thelook_dev_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
