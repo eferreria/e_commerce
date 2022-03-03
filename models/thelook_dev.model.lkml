@@ -9,6 +9,8 @@ datagroup: thelook_dev_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+label: "Development Look"
+
 persist_with: thelook_dev_default_datagroup
 
 explore: products {
@@ -43,11 +45,11 @@ explore: order_items {
     relationship: many_to_one
   }
 
-  join: state_summary {
-    type: left_outer
-    sql_on: ${users.state} = ${state_summary.state} ;;
-    relationship: many_to_one
-  }
+  # join: state_summary {
+  #   type: left_outer
+  #   sql_on: ${users.state} = ${state_summary.state} ;;
+  #   relationship: many_to_one
+  # }
 
   join: order_fact {
     view_label: "Order Items"

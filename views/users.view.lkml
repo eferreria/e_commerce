@@ -1,6 +1,18 @@
 view: users {
-  sql_table_name: `looker-private-demo.thelook.users`
+  # sql_table_name: `looker-private-demo.thelook.users`    ;;
+
+  derived_table: {
+    sql:
+    select * from  `looker-private-demo.thelook.users`
+    where
+    {% if select_month._parameter_value == "'January'" %} ((( users.created_at  ) >= (TIMESTAMP('2022-01-01 00:00:00', 'America/Los_Angeles')) AND ( users.created_at  ) < (TIMESTAMP('2022-02-01 00:00:00', 'America/Los_Angeles'))))
+    {% elsif select_month._parameter_value == "'February'" %} 1=2
+    {% else %} 1=1
+    {% endif %}
+
     ;;
+  }
+
   drill_fields: [id]
 
   dimension: id {
@@ -25,12 +37,19 @@ view: users {
     sql: ${TABLE}.country ;;
   }
 
+  parameter: select_month {
+    type: string
+    allowed_value: { value: "January" }
+    allowed_value: { value: "February" }
+  }
+
   dimension_group: created {
     type: time
     timeframes: [
       raw,
       time,
       date,
+      month_name,
       week,
       month,
       quarter,
@@ -103,6 +122,11 @@ view: users {
   measure: count {
     type: count
     drill_fields: [detail*]
+
+    html:
+    Total Count: {{value}} <br>
+    State: {{state._value}}
+    ;;
   }
 
   # ----- Sets of fields for drilling ------

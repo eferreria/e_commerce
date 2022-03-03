@@ -15,8 +15,8 @@
 
 
 
-# visualization: {
-#   id: "helloworld"
-#   label: "Hello World"
-#   file: "visualizations/hello-world.js"
-# }
+visualization: {
+  id: "helloworld"
+  label: "Hello World"
+  file: "visualizations/hello-world.js"
+}
