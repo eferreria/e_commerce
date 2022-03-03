@@ -6,11 +6,11 @@
 # local_dependency: {
 #   project: "name_of_other_project"
 # }
-# visualization: {
-#   id: "c-tree"
-#   label: "Eric's Tree"
-#   file: "visualizations/collapsible-tree.js"
-# }
+visualization: {
+  id: "c-tree"
+  label: "Eric's Tree"
+  file: "visualizations/collapsible-tree.js"
+}
 
 
 
