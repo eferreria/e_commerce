@@ -10,6 +10,7 @@ looker.plugins.visualizations.add({
         label: "Font Size",
         values: [
           {"Large": "large"},
+          {"Medium": "medium"},
           {"Small": "small"}
         ],
         display: "radio",
@@ -32,6 +33,9 @@ looker.plugins.visualizations.add({
           }
           .hello-world-text-large {
             font-size: 72px;
+          }
+          .hello-world-text-medium {
+            font-size: 24px;
           }
           .hello-world-text-small {
             font-size: 18px;
@@ -69,6 +73,8 @@ looker.plugins.visualizations.add({
       // Set the size to the user-selected size
       if (config.font_size == "small") {
         this._textElement.className = "hello-world-text-small";
+      } else if (config.font_size == "medium") {
+        this._textElement.className = "hello-world-text-medium";
       } else {
         this._textElement.className = "hello-world-text-large";
       }
