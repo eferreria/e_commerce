@@ -4,6 +4,7 @@ view: order_items {
   drill_fields: [id]
 
   dimension: id {
+    label: "Order Items ID"
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
@@ -17,6 +18,7 @@ view: order_items {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]

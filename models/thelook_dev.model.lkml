@@ -92,6 +92,13 @@ explore: events {
 }
 
 explore: orders {
+    query: status {
+        label: "Total Orders by Status"
+        dimensions: [status]
+        filters: [orders.created_date: "last 7 days"]
+        measures: [count]
+    }
+
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
@@ -99,4 +106,47 @@ explore: orders {
   }
 }
 
-explore: users {}
+explore: users {
+  always_join: [sample_data]
+
+  join: sample_data {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${sample_data.id} = ${users.id} ;;
+  }
+}
+
+explore: custom_map {
+  from: users
+  fields: [custom_map.region_selector, custom_map.city, custom_map.state,
+    custom_map.region_selector_filter, custom_map.zip, custom_map.region_selector_color,
+    custom_map.market_region, custom_map.county, custom_map.county_fips, custom_map.exposed_fields*
+    , hospital_locations.all_hosp_loc*, dashboard_links.current_dashboard, dashboard_links.rendered_nav_guide
+  ]
+
+  join: hospital_locations {
+    sql_on:  ${custom_map.zip} = ${hospital_locations.zip};;
+    relationship: many_to_one
+  }
+
+  join: dashboard_links {
+    type: left_outer
+    relationship: one_to_one
+    sql:  ;;
+}
+}
+
+# # Place in `thelook_dev` model
+# explore: +orders {
+#   aggregate_table: rollup__status {
+#     query: {
+#       dimensions: [status]
+#       measures: [count]
+#       timezone: "America/Los_Angeles"
+#     }
+
+#     materialization: {
+#       datagroup_trigger: thelook_dev_default_datagroup
+#     }
+#   }
+# }
