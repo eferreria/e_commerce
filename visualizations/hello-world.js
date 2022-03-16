@@ -65,7 +65,7 @@ looker.plugins.visualizations.add({
 
       // Grab the first cell of the data
       var firstRow = data[0];
-      var firstCell = firstRow[queryResponse.fields.dimensions[1].name];
+      var firstCell = firstRow[queryResponse.fields.dimensions[0].name];
 
       // Insert the data into the page
       this._textElement.innerHTML = LookerCharts.Utils.htmlForCell(firstCell);
