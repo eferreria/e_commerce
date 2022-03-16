@@ -107,13 +107,12 @@ explore: orders {
 }
 
 explore: users {
-  always_join: [sample_data]
 
-  join: sample_data {
-    type: inner
-    relationship: one_to_one
-    sql_on: ${sample_data.id} = ${users.id} ;;
-  }
+  # join: sample_data {
+  #   type: inner
+  #   relationship: one_to_one
+  #   sql_on: ${sample_data.id} = ${users.id} ;;
+  # }
 }
 
 explore: custom_map {

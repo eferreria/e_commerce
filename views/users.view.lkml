@@ -194,6 +194,14 @@ view: users {
   #   suggest_dimension: city
   # }
 
+  measure: state_list {
+    type: list
+    list_field: state
+    html:
+    Something {{rendered_value}}
+    ;;
+  }
+
   dimension: campaign_name {
     type: string
     html: {{ full_name._value }} ;;
