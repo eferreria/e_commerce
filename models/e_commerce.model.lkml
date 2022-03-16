@@ -1,4 +1,4 @@
-connection: "ef-bq"
+connection: "@{connection}"
 
 # include all the views
 include: "/views/**/*.view"

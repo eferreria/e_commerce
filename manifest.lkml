@@ -9,7 +9,7 @@
 
 constant: connection {
   export: override_required
-  value: "{{_user_attributes['connection_name']}}"
+  value: "ef-bq"
 }
 
 visualization: {
