@@ -195,12 +195,36 @@ view: users {
   # }
 
   measure: state_list {
-    type: list
-    list_field: state
+    type: string
+    sql:  STRING_AGG(DISTINCT CAST(${state} AS STRING), ', ') ;;
     html:
-    Something {{rendered_value}}
+    <p style="white-space:normal">
+    {% assign list = state_list._value | split: ", " | sort %}
+    {% assign listnum = 0 %}
+
+    {% for item in list %}
+      {% assign listnum = listnum | plus: 1 %}
+    {% endfor %}
+
+    {% for item in (0..2) %}
+      {% assign test = listnum | minus: item %}
+      {% if test != 1 and item != 2 %} {{ list[item] | append: ", "}}
+      {% else %} {{ list[item]  }}
+      {% endif %}
+    {% endfor %}
+
+    {% if list[2] == list[-1] or list[1] == list[-1] or list[0] == list[-1] %}
+    {% else %}
+      + {{ listnum | minus:3}} more
+    {% endif %}
+    </p>
     ;;
   }
+
+# measure: state_count {
+#   type: count_distinct
+#   sql: ${state} ;;
+# }
 
   dimension: campaign_name {
     type: string

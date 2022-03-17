@@ -30,6 +30,7 @@ looker.plugins.visualizations.add({
             flex-direction: column;
             justify-content: center;
             text-align: center;
+            white-space: normal;
           }
           .hello-world-text-large {
             font-size: 72px;
