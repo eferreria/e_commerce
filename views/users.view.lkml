@@ -208,7 +208,8 @@ view: users {
 
     {% for item in (0..2) %}
       {% assign test = listnum | minus: item %}
-      {% if test != 1 and item != 2 %} {{ list[item] | append: ", "}}
+      {% if listnum == 1 %} {{ list[item]  }}
+      {% elsif test != 1 and item != 2 %} {{ list[item] | append: ", "}}
       {% else %} {{ list[item]  }}
       {% endif %}
     {% endfor %}
