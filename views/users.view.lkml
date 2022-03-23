@@ -332,6 +332,8 @@ view: users {
     map_layer_name: us_states
     type: string
     sql: ${TABLE}.state ;;
+    suggest_explore: option_2_suggest_explore
+    suggest_dimension: option_2_suggest_explore.state
   }
 
   dimension: traffic_source {
@@ -351,7 +353,7 @@ view: users {
 
   dimension: days_since_signup {
     type: number
-    sql: datediff(days, ${created_date}, currentdate ;;
+    sql: date_diff(current_date, ${created_date}, day) ;;
   }
 
   dimension: days_since_signup_tier {

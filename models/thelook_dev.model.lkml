@@ -13,6 +13,8 @@ label: "Development Look"
 
 persist_with: thelook_dev_default_datagroup
 
+week_start_day: tuesday
+
 explore: products {
   join: distribution_centers {
     type: left_outer
@@ -39,6 +41,10 @@ explore: inventory_items {
 
 explore: order_items {
   hidden: yes
+
+  # Option 1
+  # sql_always_where: ${users.state} not in ('Alabama', 'Alaska') ;;
+
   join: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;

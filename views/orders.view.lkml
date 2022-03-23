@@ -23,6 +23,40 @@ view: orders {
     sql: ${TABLE}.created_at ;;
   }
 
+  dimension: report_flag {
+    type: yesno
+    sql: ${created_raw} is not null ;;
+  }
+
+  dimension: report_flag_2 {
+    hidden: yes
+    type: number
+    sql:
+    case
+    when ${created_raw} is not null
+    then 1
+    else
+    0
+    end
+    ;;
+  }
+
+  measure: sum_flag {
+    type: sum
+    sql: ${report_flag_2} ;;
+  }
+
+  measure: filtered_measure {
+    type: count
+    filters: [ gender: "M" ]
+  }
+
+  measure: pct_report {
+    type: number
+    sql: ${filtered_measure}/${sum_flag} ;;
+    value_format_name: percent_1
+  }
+
   dimension_group: delivered {
     type: time
     timeframes: [

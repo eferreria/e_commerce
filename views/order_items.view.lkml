@@ -134,6 +134,18 @@ view: order_items {
     value_format_name: usd
   }
 
+  measure: min_order_revenue {
+    type: min
+    sql: ${sale_price} ;;
+    value_format_name: usd
+  }
+
+  measure: max_order_revenue {
+    type: max
+    sql: ${sale_price} ;;
+    value_format_name: usd
+  }
+
   measure: avg_total_sales {
     type: average
     sql: ${sale_price} ;;
