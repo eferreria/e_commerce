@@ -3,6 +3,7 @@ connection: "@{connection}"
 # include all the views
 include: "/views/**/*.view"
 include: "/dashboards/*.dashboard"
+include: "/data_tests/revenue_tests.lkml"
 
 datagroup: thelook_dev_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -98,6 +99,7 @@ explore: events {
 }
 
 explore: orders {
+  hidden: yes
     query: status {
         label: "Total Orders by Status"
         dimensions: [status]

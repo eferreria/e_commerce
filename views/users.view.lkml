@@ -222,6 +222,24 @@ view: users {
     ;;
   }
 
+  measure: created_date_list {
+    type: string
+    sql: STRING_AGG(DISTINCT CAST(${created_date} AS STRING), ', ') ;;
+
+    html:
+    <p style="white-space:normal">
+    {% assign list = created_date_list._value | split: ", " | sort %}
+    {% assign listnum = 0 %}
+
+    {% for item in list %}
+    {% assign listnum = listnum | plus: 1 %}
+    {% endfor %}
+
+    {{listnum}}
+    </p>
+    ;;
+  }
+
 # measure: state_count {
 #   type: count_distinct
 #   sql: ${state} ;;

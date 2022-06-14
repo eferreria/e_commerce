@@ -20,7 +20,8 @@ view: order_items {
       month,
       month_name,
       quarter,
-      year
+      year,
+      hour_of_day
     ]
     sql: ${TABLE}.created_at ;;
   }
@@ -38,6 +39,28 @@ view: order_items {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.delivered_at ;;
+  }
+
+  parameter: date_source {
+    type: unquoted
+    allowed_value: { value: "created_at"}
+    allowed_value: { value: "delivered_at"}
+  }
+
+  dimension_group: selected {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    sql:
+    ${TABLE}.{{date_source._parameter_value}}
+    ;;
   }
 
   dimension: inventory_item_id {
