@@ -6,7 +6,7 @@ view: order_items {
   dimension: id {
     label: "Order Items ID"
     # primary_key: yes
-    # test again
+    # test again 2
     type: number
     sql: ${TABLE}.id ;;
   }
