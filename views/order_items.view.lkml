@@ -21,7 +21,12 @@ view: order_items {
       month_name,
       quarter,
       year,
-      hour_of_day
+      hour_of_day,
+      day_of_year,
+      day_of_month,
+      day_of_week,
+      month_num,
+      day_of_week_index
     ]
     sql: ${TABLE}.created_at ;;
   }
