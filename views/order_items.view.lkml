@@ -190,3 +190,30 @@ view: order_items {
     ]
   }
 }
+
+
+# If necessary, uncomment the line below to include explore_source.
+# include: "thelook_dev.model.lkml"
+
+view: order_items_by_state {
+  derived_table: {
+    explore_source: order_items {
+      column: total_orders {}
+      column: state { field: users.state }
+    }
+  }
+  dimension: total_orders {
+
+    hidden: yes
+    type: number
+  }
+  dimension: state {
+    primary_key: yes
+    hidden: yes
+  }
+  measure: total_orders_by_state {
+    type: sum
+    sql: ${total_orders} ;;
+  }
+
+}

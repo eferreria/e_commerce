@@ -88,6 +88,11 @@ explore: order_items {
     sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
     relationship: many_to_one
   }
+
+  join: order_items_by_state {
+    sql_on: ${order_items_by_state.state} = ${users.state} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: events {
