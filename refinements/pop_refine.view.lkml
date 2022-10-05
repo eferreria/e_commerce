@@ -94,7 +94,6 @@ view: +order_items {
 # ---------- EXPLORE ---------- #
 
 explore: +order_items {
-  label: "PoP Method 2: Allow users to choose periods with parameters"
 
   always_join: [calendar_dim]
 
