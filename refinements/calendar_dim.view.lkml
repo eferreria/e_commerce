@@ -1,3 +1,12 @@
+# Copyright 2022 Google. This software is provided as-is, without warranty or representation for any use or purpose.
+# Your use of it is subject to your agreement with Google.
+#
+# This LookML File will generate a calendar table
+# It is defaulted to generate all the days of the Current Calendar Year, + 4 years back,
+# for a total of 5 complete years including the current year
+# this can be adjusted by change the constants in the GENERATE_ARRAY function
+# Note that this has been tested only in BigQuery SQL Dialect
+
 view: calendar_dim {
   label: "Calendar"
   derived_table: {
@@ -5,7 +14,7 @@ view: calendar_dim {
       SELECT calendar_date FROM
         (
           SELECT DATE_ADD(date_add(date_trunc(current_date(), year), INTERVAL 1 YEAR),INTERVAL -param DAY) AS calendar_date
-          FROM unnest(GENERATE_ARRAY(0, 1825, 1)) as param
+          FROM unnest(GENERATE_ARRAY(1, 1826, 1)) as param
         )
       WHERE
         {% if calendar_filter._parameter_value == 'current_month' %}
