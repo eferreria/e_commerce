@@ -1,11 +1,28 @@
+# { DOCUMENTATION
 # Copyright 2022 Google. This software is provided as-is, without warranty or representation for any use or purpose.
 # Your use of it is subject to your agreement with Google.
+#
+# Description: Looker generates filter context based on the field type. For Date Type Fields, end users
+# can get confused or query the wrong dates unintentionally due to the many options presented in the filter context
+# The goal of this LookML File is to create a workaround using a standalone view and use this to filter a specific date
+# from a target explore
 #
 # This LookML File will generate a calendar table
 # It is defaulted to generate all the days of the Current Calendar Year, + 4 years back,
 # for a total of 5 complete years including the current year
 # this can be adjusted by change the constants in the GENERATE_ARRAY function
 # Note that this has been tested only in BigQuery SQL Dialect
+#
+# Use the calendar_dim view as an inner join to any explore that users asks for a curated date filter
+# The example below will join the calendar_dim to the order_items explore that is commonly referenced in Looker Training
+# always_join: [calendar_dim]
+
+# join: calendar_dim {
+#   type: inner
+#   relationship: many_to_one
+#   sql_on: ${order_items.created_date} = ${calendar_dim.calendar_date} ;;
+# }
+# -- END DOCUMENTATION }
 
 view: calendar_dim {
   label: "Calendar"
