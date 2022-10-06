@@ -144,6 +144,7 @@
 
 view: users {
   sql_table_name: `looker-private-demo.thelook.users`;;
+  # sql_table_name: `thelook.users`;;
   drill_fields: [id, created_date]
 # derived_table: {
 #   sql:

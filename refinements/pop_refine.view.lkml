@@ -4,6 +4,8 @@ include: "calendar_dim.view"
 
 view: +order_items {
 
+# -- POP
+# {
 # parameter: choose_breakdown {
 #   label: "Choose Grouping (Rows)"
 #   view_label: "_PoP"
@@ -88,6 +90,7 @@ view: +order_items {
 #         {% elsif choose_comparison._parameter_value == 'Week' %} ${created_week}
 #         {% else %}NULL{% endif %} ;;
 #   }
+# --}
 }
 
 
@@ -95,7 +98,7 @@ view: +order_items {
 
 explore: +order_items {
 
-  always_join: [calendar_dim]
+  # always_join: [calendar_dim]
 
   join: calendar_dim {
     type: inner

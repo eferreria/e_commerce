@@ -60,7 +60,6 @@ view: calendar_dim {
   label: "Date Filter"
   view_label: " Calendar Date Filter"
   type: unquoted
-  default_value: "current_month"
   allowed_value: {label: "This Month" value:"current_month"}
   allowed_value: {label: "This Quarter" value:"current_qtr"}
   allowed_value: {label: "This Year" value:"current_yr"}
@@ -70,6 +69,7 @@ view: calendar_dim {
   allowed_value: {label: "Previous Month" value:"prev_month"}
   allowed_value: {label: "Previous Quarter" value:"prev_qtr"}
   allowed_value: {label: "Previous Year" value:"prev_yr"}
+    allowed_value: {label: "All time" value:"all_time"}
 }
 
   dimension: calendar_date {

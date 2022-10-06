@@ -8,9 +8,14 @@ include: "/refinements/*.*"
 include: "/explores/order_items.explore"
 
 datagroup: thelook_dev_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
+
+datagroup: agg_tables_datagroup {
+  sql_trigger: SELECT current_date;;
+  max_cache_age: "24 hour"
+}
+
 
 label: "Development Look"
 
@@ -98,16 +103,16 @@ explore: custom_map {
 }
 
 # # Place in `thelook_dev` model
-# explore: +orders {
-#   aggregate_table: rollup__status {
-#     query: {
-#       dimensions: [status]
-#       measures: [count]
-#       timezone: "America/Los_Angeles"
-#     }
+explore: +order_items {
+  aggregate_table: rollup__created_date {
+    query: {
+      dimensions: [created_date, calendar_dim.calendar_date]
+      measures: [total_revenue]
 
-#     materialization: {
-#       datagroup_trigger: thelook_dev_default_datagroup
-#     }
-#   }
-# }
+    }
+
+    materialization: {
+      datagroup_trigger: agg_tables_datagroup
+    }
+  }
+}

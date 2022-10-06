@@ -1,6 +1,6 @@
 view: order_items {
-  sql_table_name: `looker-private-demo.thelook.order_items`
-    ;;
+  # sql_table_name: `@{bq_project_name}.thelook.order_items`;;
+  sql_table_name:  `looker-private-demo.thelook.order_items`;;
   drill_fields: [id]
 
   dimension: id {
@@ -178,6 +178,21 @@ view: order_items {
     type: average
     sql: ${sale_price} ;;
     value_format_name: usd
+  }
+
+  measure: total_days_in_range {
+    type: count_distinct
+    sql: ${created_date} ;;
+  }
+
+  measure: first_day_in_range {
+    type: date
+    sql: min(${created_date}) ;;
+  }
+
+  measure: last_day_in_range {
+    type: date
+    sql: max(${created_date}) ;;
   }
 
 # =================================== End Measures =================================== }

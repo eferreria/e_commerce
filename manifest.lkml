@@ -32,6 +32,14 @@ constant: db_2_url {
   value: "/dashboards-next/780"
 }
 
+constant: env {
+  value: "{{_user_attributes['env']}}"
+}
+
+constant: bq_project_name {
+  value: "looker-private-@{env}"
+}
+
 
 constant: region_selector{
   value: "Region+Selector"
