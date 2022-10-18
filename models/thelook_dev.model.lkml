@@ -104,15 +104,15 @@ explore: custom_map {
 
 # # Place in `thelook_dev` model
 explore: +order_items {
-  aggregate_table: rollup__created_date {
-    query: {
-      dimensions: [created_date, calendar_dim.calendar_date]
-      measures: [total_revenue]
+  # aggregate_table: rollup__created_date {
+  #   query: {
+  #     dimensions: [created_date, calendar_dim.calendar_date]
+  #     measures: [total_revenue]
 
-    }
+  #   }
 
-    materialization: {
-      datagroup_trigger: agg_tables_datagroup
-    }
-  }
+  #   materialization: {
+  #     datagroup_trigger: agg_tables_datagroup
+  #   }
+  # }
 }
