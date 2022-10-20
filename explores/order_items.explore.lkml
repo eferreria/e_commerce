@@ -30,11 +30,11 @@ explore: order_items {
     relationship: many_to_one
   }
 
-  join: orders {
-    type: left_outer
-    sql_on: ${order_items.order_id} = ${orders.order_id} ;;
-    relationship: many_to_one
-  }
+  # join: orders {
+  #   type: left_outer
+  #   sql_on: ${order_items.order_id} = ${orders.order_id} ;;
+  #   relationship: many_to_one
+  # }
 
   join: products {
     type: left_outer
