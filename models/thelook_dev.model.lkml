@@ -16,6 +16,10 @@ datagroup: agg_tables_datagroup {
   max_cache_age: "24 hour"
 }
 
+datagroup: datagroup_trigger_test_datagroup {
+  sql_trigger: select row_count from ${datagroup_trigger_test.SQL_TABLE_NAME} ;;
+}
+
 
 label: "Development Look"
 
