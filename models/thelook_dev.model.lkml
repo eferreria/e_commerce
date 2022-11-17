@@ -17,7 +17,7 @@ datagroup: agg_tables_datagroup {
 }
 
 datagroup: datagroup_trigger_test_datagroup {
-  sql_trigger: select row_count from ${datagroup_trigger_test.SQL_TABLE_NAME} ;;
+  sql_trigger: select row_count from `3L_thelook_dev_datagroup_trigger_test`  ;;
 }
 
 
