@@ -3,7 +3,7 @@ view: datagroup_trigger_test {
   derived_table: {
     sql:
     select count(*) as row_count from `@{bq_project_name}.thelook.order_items`;;
-    materialized_view: yes
+    publish_as_db_view: yes
   }
   dimension: row_count  {}
 }
