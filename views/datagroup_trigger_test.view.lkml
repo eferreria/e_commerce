@@ -14,7 +14,7 @@ explore: test_order_item {}
 view: test_order_item {
   derived_table: {
     sql: select * from ${order_items.SQL_TABLE_NAME} ;;
-    datagroup_trigger: datagroup_trigger_test_datagroup
+    datagroup_trigger: new_datagroup_trigger_test_datagroup
   }
 
   dimension: order_id {}

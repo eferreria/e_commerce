@@ -16,7 +16,7 @@ datagroup: agg_tables_datagroup {
   max_cache_age: "24 hour"
 }
 
-datagroup: datagroup_trigger_test_datagroup {
+datagroup: new_datagroup_trigger_test_datagroup {
   sql_trigger: select row_count from `3L_thelook_dev_datagroup_trigger_test`  ;;
 }
 
