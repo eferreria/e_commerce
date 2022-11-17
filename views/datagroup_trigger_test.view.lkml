@@ -4,6 +4,7 @@ view: datagroup_trigger_test {
     sql:
     select count(*) as row_count from `@{bq_project_name}.thelook.order_items`;;
     publish_as_db_view: yes
+    sql_trigger_value: select extract(hour from current_timestamp()) ;;
   }
   dimension: row_count  {}
 }
