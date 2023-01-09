@@ -365,7 +365,7 @@ view: users {
     sql: ${TABLE}.zip ;;
     drill_fields: [county_fips]
     link: {
-      url: "/explore/tref_sandbox/custom_map?toggle=dat,vis&qid=cRsWAPVcwqGZYo1bcz83Y4"
+      url: "/explore/thelook_dev/custom_map?toggle=dat,vis&qid=cRsWAPVcwqGZYo1bcz83Y4"
       label: "US County Map Layer"
     }
   }
@@ -676,7 +676,7 @@ view: users {
     ;;
     # link: {
     #   url: "
-    #   https://profservices.dev.looker.com/explore/tref_sandbox/custom_map?toggle=dat,fil,vis&qid=1ReMwMpTu4leIaqigf4Vja"
+    #   https://profservices.dev.looker.com/explore/thelook_dev/custom_map?toggle=dat,fil,vis&qid=1ReMwMpTu4leIaqigf4Vja"
     #   label: "US Zip Map Layer"
     # }
   }
