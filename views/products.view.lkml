@@ -14,6 +14,19 @@ view: products {
     sql: ${TABLE}.brand ;;
   }
 
+  filter: select_brand {
+    type: string
+    suggest_dimension: brand
+  }
+
+  dimension: selected_brand {
+    sql:
+    CASE WHEN {% condition select_brand %} ${brand} {% endcondition %} THEN ${brand}
+    ELSE 'All Other Brands'
+    END
+    ;;
+  }
+
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;

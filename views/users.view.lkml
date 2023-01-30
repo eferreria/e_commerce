@@ -546,8 +546,12 @@ view: users {
     {% elsif region_selector._parameter_value == "market_region" %} ${market_region}
     {% elsif region_selector._parameter_value == "super_region" %} ${super_region}
     {% endif %}
+
     ;;
+
   }
+
+
 
   dimension: market_region {
     type: string

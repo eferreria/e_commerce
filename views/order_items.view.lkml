@@ -31,6 +31,11 @@ view: order_items {
     sql: ${TABLE}.created_at ;;
   }
 
+  parameter: abstract_value {
+    type: date
+
+  }
+
   dimension_group: delivered {
     type: time
     timeframes: [
