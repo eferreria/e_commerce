@@ -242,9 +242,9 @@ view: order_items_by_state {
   }
 
   set: report_1_fields {
-    fields: ["order_items.total_revenue",
-      "order_items.total_orders",
-      "products.category"]
+    fields: [order_items.total_revenue,
+      order_items.total_orders,
+      products.category]
   }
 
 }
