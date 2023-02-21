@@ -241,4 +241,26 @@ view: order_items_by_state {
     sql: ${total_orders} ;;
   }
 
+  set: report_1_fields {
+    fields: ["order_items.total_revenue",
+      "order_items.total_orders",
+      "products.category"]
+  }
+
 }
+
+
+view: order_items_inc {
+  derived_table: {
+    sql:
+    select * from `looker-private-demo.thelook.order_items`
+    where {% incrementcondition %} created_at {% endincrementcondition %}
+    ;;
+    increment_key: "created_date"
+    increment_offset: 1
+    datagroup_trigger: agg_tables_datagroup
+  }
+  extends: [order_items]
+}
+
+explore: order_items_inc {}
