@@ -214,6 +214,12 @@ view: order_items {
       orders.order_id
     ]
   }
+
+  set: report_1_fields {
+    fields: [order_items.total_revenue,
+      order_items.total_orders,
+      products.category]
+  }
 }
 
 
@@ -241,11 +247,7 @@ view: order_items_by_state {
     sql: ${total_orders} ;;
   }
 
-  set: report_1_fields {
-    fields: [order_items.total_revenue,
-      order_items.total_orders,
-      products.category]
-  }
+
 
 }
 
@@ -263,4 +265,5 @@ view: order_items_inc {
   extends: [order_items]
 }
 
-explore: order_items_inc {}
+explore: order_items_inc {
+}
