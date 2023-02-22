@@ -217,7 +217,7 @@ view: order_items {
 
   set: report_1_fields {
     fields: [order_items.total_revenue,
-      order_items.total_orders,
+      order_items.total_orders, order_items.count, order_items.created_year,
       products.category]
   }
 }
