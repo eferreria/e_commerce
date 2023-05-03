@@ -1,13 +1,45 @@
+view: id_groups_for_view {
+  extension: required
+
+  dimension: id { group_label:"IDs" }
+  dimension: inventory_item_id { group_label:"IDs"}
+  dimension: order_id {group_label:"IDs"}
+}
+
+
 view: order_items {
+  extends: [id_groups_for_view]
   # sql_table_name: `@{bq_project_name}.thelook.order_items`;;
-  sql_table_name:  `looker-private-demo.thelook.order_items`;;
+  # sql_table_name:  `looker-private-demo.thelook.order_items`;;
+
+  derived_table: {
+    sql:
+    select * from `looker-private-demo.thelook.order_items`
+
+    ;;
+  }
+
+    # where
+    # created_at >= {% parameter start_date_param %} and
+    # created_at <= {% parameter end_date_param %}
+
   drill_fields: [id]
+
+
 
   dimension: id {
     label: "Order Items ID"
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+  }
+
+  parameter: start_date_param {
+    type: date
+  }
+
+  parameter: end_date_param {
+    type: date
   }
 
   dimension_group: created {
@@ -158,7 +190,14 @@ view: order_items {
 
   measure: total_orders {
     type: count_distinct
+    hidden: yes
     sql: ${order_id} ;;
+  }
+
+  dimension: neg_rev {
+    type: number
+    sql: -100 ;;
+    html: {{ value | divided_by: 5}} ;;
   }
 
   measure: total_revenue {
@@ -216,7 +255,7 @@ view: order_items {
   }
 
   set: report_1_fields {
-    fields: [order_items.total_revenue,
+    fields: [total_revenue,
       order_items.total_orders, order_items.count, order_items.created_year,
       products.category]
   }

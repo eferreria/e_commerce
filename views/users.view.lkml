@@ -195,6 +195,22 @@ view: users {
   #   suggest_dimension: city
   # }
 
+  measure: state_list_2 {
+    type: string
+    sql:   STRING_AGG(DISTINCT CAST(${state} AS STRING), ', ') ;;
+    html:
+    <p style="white-space:normal">
+    {% assign list = state_list._value | split: ", " | sort %}
+    {% assign listnum = 0 %}
+
+    {% for item in list %}
+      {{ item }}<br>
+    {% endfor %}
+
+    </p>
+    ;;
+  }
+
   measure: state_list {
     type: string
     sql:  STRING_AGG(DISTINCT CAST(${state} AS STRING), ', ') ;;

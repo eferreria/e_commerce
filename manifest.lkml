@@ -13,6 +13,13 @@ constant: connection {
 }
 
 visualization: {
+  id: "c-sample"
+  label: "Custom Viz Sample"
+  # url: "https://localhost:8080/index.js"
+  file: "visualizations/looker_hello_world_viz_min.js"
+}
+
+visualization: {
   id: "c-tree"
   label: "Eric's Tree"
   file: "visualizations/collapsible-tree.js"
