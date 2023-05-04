@@ -13,6 +13,12 @@ constant: connection {
 }
 
 visualization: {
+  id: "tree-org"
+  label: "Custom Tree Org"
+  file: "visualizations/tree_org.js"
+}
+
+visualization: {
   id: "c-sample"
   label: "Custom Viz Sample"
   # url: "https://localhost:8080/index.js"
