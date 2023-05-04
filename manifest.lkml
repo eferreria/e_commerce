@@ -35,9 +35,9 @@ visualization: {
 }
 
 visualization: {
-  label: "Another Custom Tree"
+  label: "#[WIP] Custom Tree"
   id: "another_custom_tree"
-  file: "visualizations/custom_collapsible_tree.js"
+  file: "visualizations/custom_collapsible_tree_v2.js"
 }
 
 visualization: {
