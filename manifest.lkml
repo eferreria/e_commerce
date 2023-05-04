@@ -37,7 +37,8 @@ visualization: {
 visualization: {
   label: "#[WIP] Custom Tree"
   id: "another_custom_tree"
-  file: "visualizations/custom_collapsible_tree_v5.js"
+  url: "https://localhost:8080/index.js"
+  # file: "visualizations/custom_collapsible_tree_v5.js"
 }
 
 visualization: {
