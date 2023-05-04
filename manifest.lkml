@@ -20,6 +20,12 @@ visualization: {
 }
 
 visualization: {
+  label: "Another Custom Tree"
+  id: "another_custom_tree"
+  file: "visualizations/custom_collapsible_tree.js"
+}
+
+visualization: {
   id: "c-tree"
   label: "Eric's Tree"
   file: "visualizations/collapsible-tree.js"
