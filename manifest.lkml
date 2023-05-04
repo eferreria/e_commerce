@@ -16,6 +16,7 @@ visualization: {
   id: "tree-org"
   label: "Custom Tree Org"
   file: "visualizations/tree_org.js"
+  dependencies: ["https://d3js.org/d3.v3.min.js"]
 }
 
 visualization: {
