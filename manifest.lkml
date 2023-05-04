@@ -13,6 +13,14 @@ constant: connection {
 }
 
 visualization: {
+  id: "new-custom-viz"
+  label: "AAA Custom Viz"
+  file: "visualizations/new-custom-viz.js"
+  dependencies: ["https://d3js.org/d3.v3.min.js"]
+
+}
+
+visualization: {
   id: "tree-org"
   label: "Custom Tree Org"
   file: "visualizations/tree_org.js"
@@ -35,7 +43,8 @@ visualization: {
 visualization: {
   id: "c-tree"
   label: "Eric's Tree"
-  file: "visualizations/collapsible-tree.js"
+  # file: "visualizations/collapsible-tree.js"
+  file: "visualizations/cleaned_collapsible_tree.js"
 }
 
 visualization: {
