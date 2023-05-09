@@ -223,12 +223,12 @@ const vis: CollapsibleTreeVisualization = {
         .text((d: any) => {
           return d.data.name
         })
-        // .on('click', (d: any) => {
-        //   LookerCharts.Utils.openDrillMenu({
-        //     links: linkMap.get(d.data.name),
-        //     event: event,
-        //   })
-        // })
+        .on('click', (d: any) => {
+          LookerCharts.Utils.openDrillMenu({
+            links: linkMap.get(d.data.name),
+            event: event,
+          })
+        })
 
       // UPDATE
       const nodeUpdate = nodeEnter.merge(node)
