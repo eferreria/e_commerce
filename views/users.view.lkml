@@ -288,12 +288,14 @@ view: users {
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
+    drill_fields: [country, state, city]
   }
 
   dimension: country {
     type: string
     map_layer_name: countries
     sql: ${TABLE}.country ;;
+    drill_fields: [country, state, city]
   }
 
   dimension_group: created {
@@ -369,6 +371,7 @@ view: users {
     sql: ${TABLE}.state ;;
     suggest_explore: option_2_suggest_explore
     suggest_dimension: option_2_suggest_explore.state
+    drill_fields: [country, state, city]
   }
 
   dimension: traffic_source {
