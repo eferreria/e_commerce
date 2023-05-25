@@ -1,4 +1,20 @@
 include: "/views/*.view"
+# Place in `thelook_dev` model
+explore: +order_items {
+  aggregate_table: rollup__products_category {
+    query: {
+      dimensions: [products.category, inventory_items.created_date]
+      measures: [total_orders, total_revenue]
+    }
+
+    materialization: {
+      datagroup_trigger: agg_tables_datagroup
+    }
+  }
+}
+
+
+
 explore: order_items {
   # hidden: yes
 
