@@ -1,10 +1,18 @@
 include: "/views/*.view"
 # Place in `thelook_dev` model
 explore: +order_items {
+  # always_join: [user_state]
+
+  # join: user_state {
+  #   type: inner
+  #   relationship: many_to_one
+  #   sql_on: ${user_state.state} = ${users.state} ;;
+  # }
+
   aggregate_table: rollup__products_category {
     query: {
       dimensions: [products.category, inventory_items.created_date]
-      measures: [total_orders, total_revenue]
+      measures: [total_revenue]
     }
 
     materialization: {

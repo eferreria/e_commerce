@@ -141,6 +141,22 @@
 #     ]
 #   }
 # }
+explore: user_state {}
+view: user_state {
+  # extends: [users]
+  derived_table: {
+    sql:
+    select distinct state from `looker-private-demo.thelook.users`
+    where email = '{{_user_attributes['test_email']}}'
+    ;;
+  }
+
+  dimension: states {
+    type: string
+    sql: ${TABLE}.state ;;
+  }
+}
+
 
 view: users {
   sql_table_name: `looker-private-demo.thelook.users`;;
