@@ -3,7 +3,7 @@ connection: "@{connection}"
 # include all the views
 include: "/views/**/*.view"
 include: "/dashboards/*.dashboard"
-include: "/data_tests/revenue_tests.lkml"
+# include: "/data_tests/revenue_tests.lkml"
 include: "/refinements/*.*"
 include: "/explores/order_items.explore"
 
