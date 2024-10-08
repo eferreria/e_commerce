@@ -147,7 +147,7 @@ view: user_state {
   derived_table: {
     sql:
     select distinct state from `looker-private-demo.thelook.users`
-    where email = '{{_user_attributes['test_email']}}'
+    where email = '{{_user_attributes['email']}}'
     ;;
   }
 

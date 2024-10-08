@@ -9,7 +9,7 @@
 
 constant: connection {
   export: override_required
-  value: "ef-bq"
+  value: "bigquery_connection"
 }
 
 visualization: {
