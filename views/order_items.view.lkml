@@ -190,7 +190,7 @@ view: order_items {
 
   measure: total_orders {
     type: count_distinct
-    hidden: yes
+    hidden: no
     sql: ${order_id} ;;
   }
 

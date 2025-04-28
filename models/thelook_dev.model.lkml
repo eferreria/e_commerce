@@ -92,6 +92,7 @@ explore: custom_map {
     custom_map.region_selector_filter, custom_map.zip, custom_map.region_selector_color,
     custom_map.market_region, custom_map.county, custom_map.county_fips, custom_map.exposed_fields*
     , hospital_locations.all_hosp_loc*, dashboard_links.current_dashboard, dashboard_links.rendered_nav_guide
+    , custom_map.selected_region_filter
   ]
 
   join: hospital_locations {

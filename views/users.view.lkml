@@ -170,6 +170,16 @@ view: users {
 #   ;;
 # }
 
+parameter: reference_date {
+  type: date
+}
+
+dimension: days_since_reference_date {
+
+  type: number
+  sql: date_diff(CAST( IFNULL({% parameter reference_date %}, DATE_ADD(current_date(), INTERVAL -2 DAY)) AS DATE ), ${created_date}, day) ;;
+}
+
   parameter: user_selected_dimension {
     type: unquoted
     allowed_value: {
@@ -395,6 +405,17 @@ view: users {
     sql: ${TABLE}.traffic_source ;;
   }
 
+  dimension: is_search_source {
+    type: yesno
+    sql: ${traffic_source} = 'Search' ;;
+  }
+
+  # measure: sales_from_complete_search_users {
+  #   type: sum
+  #   sql: ${order_items.sale_price} ;;
+
+  # }
+
   dimension: zip {
     type: zipcode
     sql: ${TABLE}.zip ;;
@@ -586,7 +607,10 @@ view: users {
 
   }
 
-
+filter: selected_region_filter {
+  type: string
+  sql: ${region_selector_filter} ;;
+}
 
   dimension: market_region {
     type: string
